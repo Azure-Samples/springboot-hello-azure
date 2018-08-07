@@ -1,0 +1,10 @@
+FROM maven:3.5-jdk-8-slim as mavenBuild
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
+
+FROM openjdk:8-jdk-slim as runtime
+COPY --from=mavenBuild /usr/src/app/target/*.jar /usr/src/app/myapp.jar
+EXPOSE 8080
+
+CMD [ "/usr/bin/java","-jar","/usr/src/app/myapp.jar" ]
