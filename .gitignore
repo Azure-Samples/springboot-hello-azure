@@ -1,3 +1,7 @@
+### VS Code ###
+.vscode
+
+### General ###
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
