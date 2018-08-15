@@ -1,5 +1,5 @@
-FROM openjdk:8-jdk-alpine
-COPY target/*.jar /usr/src/app/myapp.jar
+FROM openjdk:8-jre-alpine
+WORKDIR /usr/src/app
 EXPOSE 8080
-
-CMD [ "/usr/bin/java","-jar","/usr/src/app/myapp.jar" ]
+CMD [ "java","-jar","myapp.jar" ]
+COPY target/*.jar myapp.jar
